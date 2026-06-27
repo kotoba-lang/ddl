@@ -1,0 +1,11 @@
+{:paths ["src"]
+ ;; Zero third-party runtime deps — every namespace is portable .cljc (JVM, CLJS, SCI).
+ ;; SQL I/O has a built-in minimal tokeniser/emitter; parse-str handles CREATE TABLE
+ ;; with column defs, NOT NULL, PRIMARY KEY, DEFAULT, and table-level FK constraints.
+ :deps {}
+ :aliases
+ {:test {:extra-paths ["test"]
+         :extra-deps {io.github.cognitect-labs/test-runner
+                      {:git/tag "v0.5.1" :git/sha "dfb30dd"}}
+         :main-opts ["-m" "cognitect.test-runner"]
+         :exec-fn cognitect.test-runner.api/test}}}
