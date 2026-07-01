@@ -1,4 +1,4 @@
-# ddl-clj (スキーマ定義言語)
+# kotoba-lang/ddl
 
 [![CI](https://github.com/kotoba-lang/ddl/actions/workflows/ci.yml/badge.svg)](https://github.com/kotoba-lang/ddl/actions/workflows/ci.yml)
 
@@ -8,17 +8,14 @@ ClojureScript, and Clojure-on-WASM hosts (SCI). A database schema is plain data 
 can `assoc`, `diff`, store in Datomic, or generate; the library adds structural
 validation, CREATE TABLE SQL I/O, and a pure schema-diff / migration emitter around it.
 
-Sibling of the other reusable `*-clj` kernels in this org
-([bpmn-clj](https://github.com/com-junkawasaki/bpmn-clj),
-[dmn-clj](https://github.com/com-junkawasaki/dmn-clj)).
+Sibling of other reusable kotoba-lang contract kernels such as
+[`kotoba-lang/bpmn`](https://github.com/kotoba-lang/bpmn) and
+[`kotoba-lang/dmn`](https://github.com/kotoba-lang/dmn).
 
-## Why a shared library (org placement)
+## Why a shared library
 
-Per the three-org rule, the **reusable** schema model lives in **com-junkawasaki**;
-**public-benefit actor instances** that drive concrete database migrations live in
-**etzhayyim**; any **business/private deployment** lives in **gftdcojp**. ddl-clj is
-the dep — it carries no domain schema and no engine bindings (those are
-host-injected ports).
+The reusable schema model lives in `kotoba-lang/ddl`. It carries no domain
+schema and no engine bindings; those remain host-injected ports.
 
 ## The model: DDL as EDN (`ddl.model`)
 
@@ -100,5 +97,5 @@ Op types: `:create-table`, `:drop-table`, `:add-column`, `:drop-column`, `:alter
 ## Test
 
 ```
-clojure -X:test
+clojure -M:test
 ```
