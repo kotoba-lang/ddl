@@ -1,5 +1,12 @@
 # kotoba-lang/ddl
 
+The closed structural-validation subset is also available as native `.kotoba`
+in `ddl.bounded-validate`. Its canonical integer schema is bounded to three
+tables, four columns, and two foreign keys; malformed encodings fail closed and
+the kernel compiles directly to restricted JavaScript and Wasm without a JVM
+runtime. SQL text, string identifiers, open type syntax, key member lists,
+schema diff, and migration emission remain in the portable `.cljc` domain.
+
 [![CI](https://github.com/kotoba-lang/ddl/actions/workflows/ci.yml/badge.svg)](https://github.com/kotoba-lang/ddl/actions/workflows/ci.yml)
 
 Handle **relational DDL schemas as EDN/Clojure data** in portable Clojure — every

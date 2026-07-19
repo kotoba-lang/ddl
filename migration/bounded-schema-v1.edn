@@ -1,0 +1,20 @@
+{:migration/id :ddl/bounded-schema-v1
+ :status :candidate
+ :source-of-truth {:open-validator "src/ddl/validate.cljc"
+                   :bounded-kernel "src/ddl/bounded_validate.kotoba"}
+ :boundary
+ {:encoding [:table-count :column-count :foreign-key-count
+             [:tables :id :primary-key-flag]
+             [:columns :owner-table-id :id :type-present-flag]
+             [:foreign-keys :owner-table-id :referenced-table-id]]
+  :limits {:tables 3 :columns 4 :foreign-keys 2
+           :reason :compiler-fixed-512-fuel}
+  :flags #{0 1}}
+ :covered [:duplicate-column :empty-column-type :table-without-primary-key
+           :dangling-foreign-key]
+ :excluded [:sql-text :string-identifiers :type-syntax :primary-key-members
+            :foreign-key-column-members :schema-diff :migration-emission]
+ :evidence {:cljc-oracle "test/ddl/bounded_matrix_test.clj"
+            :kotoba-conformance "test/ddl/bounded_conformance.kotoba"
+            :web-wasm-verifier "scripts/verify-kotoba-bounded.mjs"
+            :ceiling-case :three-tables-four-columns-two-foreign-keys}}
