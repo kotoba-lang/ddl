@@ -10,7 +10,7 @@
     {:ddl/op :drop-column   :ddl/table <name-string>  :ddl/column <name-string>}
     {:ddl/op :alter-column  :ddl/table <name-string>  :ddl/from <col-map> :ddl/to <col-map>}"
   (:require [clojure.set :as set]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [ddl.ddl :as ddlio]))
 
 ;; --- diff ---
