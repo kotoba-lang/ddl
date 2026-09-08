@@ -10,7 +10,7 @@
     - Case-insensitive SQL keywords
 
   emit-str generates portable CREATE TABLE SQL that round-trips through parse-str."
-  (:require [clojure.string :as str]))
+  (:require [kotoba.lang.text :as str]))
 
 ;; --- internal: character access portable across JVM and CLJS ---
 
@@ -70,7 +70,7 @@
   "Parse a single column-definition fragment into a column map, or nil if not a column."
   [s]
   (when-let [[_ col-name col-type rest-str] (re-find col-re (str/trim s))]
-    (let [rest-upper (str/upper-case rest-str)
+    (let [rest-upper (str/upper rest-str)
           not-null?  (boolean (re-find #"\bNOT\s+NULL\b" rest-upper))
           pk?        (boolean (re-find #"\bPRIMARY\s+KEY\b" rest-upper))
           default-m  (re-find #"(?i)\bDEFAULT\s+(\S+)" rest-str)]
@@ -120,7 +120,7 @@
                      fks        (volatile! [])]
                  (doseq [part parts]
                    (let [p  (str/trim part)
-                         pu (str/upper-case p)]
+                         pu (str/upper p)]
                      (cond
                        (str/starts-with? pu "PRIMARY KEY")
                        (when-let [pk (parse-pk-constraint p)]
