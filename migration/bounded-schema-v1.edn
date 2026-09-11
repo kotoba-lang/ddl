@@ -1,6 +1,6 @@
 {:migration/id :ddl/bounded-schema-v1
  :status :qualified
- :source-of-truth {:open-validator "src/ddl/validate.cljc"
+ :source-of-truth {:open-validator "src/ddl/validate.cljk"
                    :bounded-kernel "src/ddl/bounded_validate.kotoba"}
  :boundary
  {:encoding [:table-count :column-count :foreign-key-count
@@ -14,7 +14,7 @@
            :dangling-foreign-key]
  :excluded [:sql-text :string-identifiers :type-syntax :primary-key-members
             :foreign-key-column-members :schema-diff :migration-emission]
- :evidence {:cljc-oracle "test/ddl/bounded_matrix_test.clj"
+ :evidence {:cljc-oracle "test/ddl/bounded_matrix_test.cljk"
             :kotoba-conformance "test/ddl/bounded_conformance.kotoba"
             :web-wasm-verifier "scripts/verify-kotoba-bounded.mjs"
             :ceiling-case :three-tables-four-columns-two-foreign-keys
