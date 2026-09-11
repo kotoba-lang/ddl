@@ -104,5 +104,5 @@ Op types: `:create-table`, `:drop-table`, `:add-column`, `:drop-column`, `:alter
 ## Test
 
 ```
-clojure -M:test
+kbb -M:test
 ```
